@@ -6,7 +6,7 @@
 CONTAINER=larn2
 
 # Make symlink to docker for this dev environment
-#ln -sf b2b/apps/react/Dockerfile .
+#ln -sf b2b/apps/react-native/Dockerfile .
 
 # Init container
 sudo docker build --tag ${CONTAINER}:latest --cache-from ${CONTAINER}:latest -t ${CONTAINER} .

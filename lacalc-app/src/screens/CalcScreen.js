@@ -1,8 +1,5 @@
 import React from 'react';
-
-//import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-//import Fab from '@material-ui/core/Fab';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
 import InputField from '../components/InputField';
 import NumberButton from '../components/NumberButton';
 
@@ -38,10 +35,12 @@ class CalcScreen extends React.Component {
     }
 
     handleClick = (event) => {
-        //event.preventDefault();
-        //console.log(event);
-        let button=event.currentTarget.value;
-        console.log(button);
+        event.preventDefault();
+        //debugger;
+        //console.log(event.target);
+        //let button=event.target.innerText;
+        let button=event.target.innerText;
+        //console.log(button);
         console.log(this.state.statement+button);
         //console.log("Clicked" + event.target.name);
         ///console.log("Clicked" + event.target.value);
@@ -54,79 +53,68 @@ class CalcScreen extends React.Component {
         }
     }
 
+
+
     render() {
+        const numbers = [
+            {op: 0, key: '1'},
+            {op: 1, key: '2'},
+            {op: 2, key: '3'},
+            {op: 3, key: '4'},
+            {op: 4, key: '5'},
+            {op: 5, key: '6'},
+            {op: 6, key: '7'},
+            {op: 7, key: '8'},
+            {op: 8, key: '9'},
+            {op: 9, key: 'A'}
+        ];
+
+        const ops = [
+            {op:'+', key: 'B'},
+            {op:'-', key: 'C'},
+            {op:'*', key: 'D'},
+            {op:'/', key: 'E'},
+            {op:'%', key: 'F'},
+            {op:'(', key: 'G'},
+            {op:')', key: 'H'},
+            {op:'=', key: 'I'}
+        ];
+
+        let calcButtons = numbers.concat(ops);
+
         //console.log(convert().possibilities())
         return (
-                <Grid container justify='center' align='center' direction={'row'} spacing={300}>
+            <View style={styles.container}>
+
                     <InputField data={{
-                                            currentValue: this.state.statement,
-                                            input: this.state.statement, 
-                                            label: "Input",
-                                            name: 'dist' }} 
-                                    handleInput={this.handleInputFields}
-                                    handleKeys={this.handleKeyPress} />
+                                currentValue: this.state.statement,
+                                input: this.state.statement, 
+                                label: "Input",
+                                name: 'dist' }} 
+                        handleInput={this.handleInputFields}
+                        handleKeys={this.handleKeyPress} />
 
-                    <Grid container xs={8} style={{marginTop: '20px'}}>
-                            <NumberButton 
-                                no={0} 
-                                handleClick={this.handleClick} />
-                            <NumberButton 
-                                no={1} 
-                                handleClick={this.handleClick} />
-                            <NumberButton 
-                                no={2} 
-                                handleClick={this.handleClick} />
-                            <NumberButton 
-                                no={3} 
-                                handleClick={this.handleClick} />
-                            <NumberButton 
-                                no={4} 
-                                handleClick={this.handleClick} />
-                            <NumberButton 
-                                no={5} 
-                                handleClick={this.handleClick} />
-                            <NumberButton 
-                                no={6}
-                                handleClick={this.handleClick} />
-                            <NumberButton 
-                                no={7}
-                                handleClick={this.handleClick} />
-                            <NumberButton 
-                                no={8}
-                                handleClick={this.handleClick} />
-                            <NumberButton 
-                                no={9}
-                                handleClick={this.handleClick} />
-                            <NumberButton 
-                                no={"+"}
-                                handleClick={this.handleClick}  />
-                            <NumberButton 
-                                no={"-"}
-                                handleClick={this.handleClick}  />
-                            <NumberButton 
-                                no={"*"}
-                                handleClick={this.handleClick}  />
-                            <NumberButton 
-                                no={"/"}
-                                handleClick={this.handleClick}  />
-                            <NumberButton 
-                                no={"%"}
-                                handleClick={this.handleClick}  />
-                            <NumberButton 
-                                no={"("}
-                                handleClick={this.handleClick}  />
-                            <NumberButton 
-                                no={")"}
-                                handleClick={this.handleClick}  />
-                            <NumberButton 
-                                no={"="}
-                                handleClick={this.handleClick}  />
-                    </Grid>
+                    <FlatList
+                        data={calcButtons}
+                        numColumns={3}
+                        renderItem={(e) => {
+                            return <NumberButton
+                                        no={e.item.op}
+                                        handleClick={this.handleClick} />
+                        }}
+                    />
+                  
 
-
-                </Grid>
+            </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+});
 
 export default CalcScreen;

@@ -4,9 +4,7 @@ import CalcScreen from './src/screens/CalcScreen';
 
 export default function App() {
   return (
-    <View style={styles.container}>
       <CalcScreen />
-    </View>
   );
 }
 

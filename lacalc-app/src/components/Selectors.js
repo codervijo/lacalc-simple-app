@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { StyleSheet, Text, View } from 'react-native';
 import Grid from '@material-ui/core/Grid';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -8,6 +8,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 const Selector = props => {
     return (
+        <View>
+        <Text>
         <Grid item xs={props.data.size} align="left" justify="left">
             <FormControl variant='outlined' style={{width: '35%'}}>
                 <InputLabel>{props.data.label}</InputLabel>
@@ -31,6 +33,8 @@ const Selector = props => {
                 </Select>
             </FormControl>
         </Grid>
+        </Text>
+        </View>
     )
 }
 

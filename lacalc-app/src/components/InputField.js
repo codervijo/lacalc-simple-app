@@ -1,22 +1,35 @@
 import React from 'react';
-import TextField from '@material-ui/core/TextField';
-//import InputAdornment from '@material-ui/core/InputAdornment';
-import Grid from '@material-ui/core/Grid';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
+//import TextField from '@material-ui/core/TextField';
 
 const InputField = props => {
     return (
-        <Grid item xs={12} justify="center" align="center">
-            <TextField
-                variant='outlined'
-                label={props.data.label}
-                value={props.data.currentValue}
-                name={props.data.name}
+        <View>
+        <Text>
+            <TextInput
+                style={{ width:'80%', height: 40, borderColor: 'gray', borderWidth: 1 }}
+                onChangeText={text => props.handleInput(text)}
                 onKeyDown={props.handleKeys}
-                onChange={props.handleInput}
-                style={{width: '50%'}}
+                value={props.data.currentValue}
+                label={props.data.label}
+                autoCorrect={false}
+                autoCapitalize="none"
             />
-        </Grid>
+
+        </Text>
+        </View>
     )
 }
+
+ //           <TextField
+ //               variant='outlined'
+ //               label={props.data.label}
+ //               value={props.data.currentValue}
+ //               name={props.data.name}
+ //               onKeyDown={props.handleKeys}
+ //               onChange={props.handleInput}
+ //               style={{width: '80%',
+ //                     justifyContent: 'center',}}
+ // //          />
 
 export default InputField;
