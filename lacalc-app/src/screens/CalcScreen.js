@@ -21,17 +21,27 @@ class CalcScreen extends React.Component {
         if (event.keyCode === 13) {
             console.log("Cleaning up");
             let ouput=eval(this.state.statement)
-            console.log(ouput)
-            this.setState({statement:ouput});
+            console.log(ouput.toString(10))
+            this.setState({statement:ouput.toString(10)});
         }
     }
 
-    handleInputFields = (event) => {
+    handleInputFields = (text) => {
         //event.preventDefault();
+        console.log(text)
+        //console.log(event.target.name);
+        //console.log(event.target.value);
+        this.setState({statement: text});
+    }
+
+    handleSubmit = (event) => {
         console.log(event)
-        console.log(event.target.name);
-        console.log(event.target.value);
-        this.setState({statement: event.target.value});
+        if (event.key === "Enter") {
+            console.log("Cleaning up");
+            let ouput=eval(this.state.statement)
+            console.log(ouput.toString(10))
+            this.setState({statement:ouput.toString(10)});
+        }   
     }
 
     handleClick = (event) => {
@@ -53,7 +63,10 @@ class CalcScreen extends React.Component {
         }
     }
 
-
+    handleClear = () => {
+        event.preventDefault();
+        this.setState({statement: ''});
+    }
 
     render() {
         const numbers = [
@@ -92,7 +105,8 @@ class CalcScreen extends React.Component {
                                 label: "Input",
                                 name: 'dist' }} 
                         handleInput={this.handleInputFields}
-                        handleKeys={this.handleKeyPress} />
+                        handleKeys={this.handleKeyPress}
+                        handleSubmit={this.handleSubmit} />
 
                     <FlatList
                         data={calcButtons}
@@ -104,6 +118,10 @@ class CalcScreen extends React.Component {
                         }}
                     />
                   
+                    <NumberButton
+                        no="CLEAR"
+                        handleClick={this.handleClear}
+                    />
 
             </View>
         )

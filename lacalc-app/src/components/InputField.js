@@ -6,8 +6,9 @@ const InputField = props => {
     return (
             <TextInput
                 style={{ marginTop:30, marginLeft:30, width:'80%', height: 40, borderColor: 'gray', borderWidth: 1 }}
-                onChange={props.handleInput}
+                onChangeText={t => props.handleInput(t)}
                 onKeyDown={props.handleKeys}
+                onSubmitEditing={t => props.handleSubmit(t)}
                 value={props.data.currentValue}
                 label={props.data.label}
                 autoCorrect={false}
