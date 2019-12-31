@@ -5,12 +5,13 @@ import { StyleSheet, Text, View, TextInput } from 'react-native';
 const InputField = props => {
     return (
             <TextInput
-                style={{ marginTop:30, marginLeft:30, width:'80%', height: 40, borderColor: 'gray', borderWidth: 1 }}
+                style={{ marginTop:"15%", marginBottom:"4%", marginLeft:"10%", width:'80%', height: 40, borderColor: 'gray', borderWidth: 1 }}
                 onChangeText={t => props.handleInput(t)}
                 onKeyDown={props.handleKeys}
                 onSubmitEditing={t => props.handleSubmit(t)}
                 value={props.data.currentValue}
                 label={props.data.label}
+                textAlign={'center'}
                 autoCorrect={false}
                 autoCapitalize="none"
             />

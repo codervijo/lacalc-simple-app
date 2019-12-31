@@ -47,7 +47,7 @@ class CalcScreen extends React.Component {
     handleClick = (event) => {
         event.preventDefault();
         //debugger;
-        //console.log(event.target);
+        console.log(event.target);
         //let button=event.target.innerText;
         let button=event.target.innerText;
         //console.log(button);
@@ -58,6 +58,27 @@ class CalcScreen extends React.Component {
             let ouput=eval(this.state.statement)
             console.log(ouput)
             this.setState({statement:ouput});
+        } else {
+            this.setState({statement: this.state.statement+button});
+        }
+    }
+
+    handlePress = (key) => {
+        //event.preventDefault();
+        //debugger;
+        console.log(key);
+        //let button=event.target.innerText;
+        let button=key;
+        //console.log(button);
+        console.log(this.state.statement+button);
+        //console.log("Clicked" + event.target.name);
+        ///console.log("Clicked" + event.target.value);
+        if (button === '=') {
+            let ouput=eval(this.state.statement)
+            console.log(ouput)
+            this.setState({statement:ouput.toString(10)});
+        } else if (button === 'CLEAR') {
+            this.setState({statement: ''});
         } else {
             this.setState({statement: this.state.statement+button});
         }
@@ -114,13 +135,15 @@ class CalcScreen extends React.Component {
                         renderItem={(e) => {
                             return <NumberButton
                                         no={e.item.op}
-                                        handleClick={this.handleClick} />
+                                        handleClick={this.handleClick}
+                                        handlePress={this.handlePress} />
                         }}
                     />
                   
                     <NumberButton
                         no="CLEAR"
                         handleClick={this.handleClear}
+                        handlePress={this.handlePress}
                     />
 
             </View>

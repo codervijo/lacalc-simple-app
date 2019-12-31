@@ -5,7 +5,10 @@ const NumberButton = props => {
     return (
             <TouchableOpacity
                 style={{flex:1}}
-                onClick={props.handleClick}>
+                key={props.no}
+                onClick={props.handleClick}
+                onPress={() => props.handlePress(props.no)} 
+            >
                 <View
                     style={{
                       backgroundColor: 'blue',
