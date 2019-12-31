@@ -4,11 +4,9 @@ import { StyleSheet, Text, View, TextInput } from 'react-native';
 
 const InputField = props => {
     return (
-        <View>
-        <Text>
             <TextInput
-                style={{ width:'80%', height: 40, borderColor: 'gray', borderWidth: 1 }}
-                onChangeText={text => props.handleInput(text)}
+                style={{ marginTop:30, marginLeft:30, width:'80%', height: 40, borderColor: 'gray', borderWidth: 1 }}
+                onChange={props.handleInput}
                 onKeyDown={props.handleKeys}
                 value={props.data.currentValue}
                 label={props.data.label}
@@ -16,8 +14,6 @@ const InputField = props => {
                 autoCapitalize="none"
             />
 
-        </Text>
-        </View>
     )
 }
 
