@@ -35,7 +35,7 @@ ENV REACT_NATIVE_PACKAGER_HOSTNAME "192.168.42.14"
 
 
 # Install Node
-ENV NODE_VERS v14.9.0
+ENV NODE_VERS v14.12.0
 RUN mkdir -p /usr/src/app/node/
 RUN wget -O- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
 RUN chmod ugo+x /root/.nvm/nvm.sh

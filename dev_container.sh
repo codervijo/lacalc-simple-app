@@ -12,5 +12,5 @@ CONTAINER=larn2
 sudo docker build --tag ${CONTAINER}:latest --cache-from ${CONTAINER}:latest -t ${CONTAINER} .
 
 # Start Dev container
-sudo docker run -p19000:19000 -p19001:19001 -p19002:19002 -p19006:19006 -v${PWD}:/usr/src/app/larn2 -it ${CONTAINER}  /bin/bash
+sudo docker run -p19000:19000 -p19001:19001 -p19002:19002 -p19003:19003 -p19004:19004 -p19005:19005 -p19006:19006 -v${PWD}:/usr/src/app/larn2 -it ${CONTAINER}  /bin/bash
 # export REACT_NATIVE_PACKAGER_HOSTNAME=10.44.144.237
